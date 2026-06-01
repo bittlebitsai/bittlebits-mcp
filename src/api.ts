@@ -1,9 +1,11 @@
-const BASE_URL = "https://bittlebits.ai";
+import { getBaseUrl } from "./config.js";
+
+const BASE_URL = getBaseUrl();
 
 export const ENDPOINTS = {
-    score:   `${BASE_URL}/skewer/mcp/v1/score/`,
-    rewrite: `${BASE_URL}/skewer/mcp/v1/rewrite/`,
-    url:     `${BASE_URL}/skewer/mcp/v1/url/`,
+    score:   `${BASE_URL}/mcp/v1/score/`,
+    rewrite: `${BASE_URL}/mcp/v1/rewrite/`,
+    url:     `${BASE_URL}/mcp/v1/url/`,
 };
 
 const POLL_INTERVAL_MS = 2000;
