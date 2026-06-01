@@ -71,7 +71,7 @@ All tools accept either a `url` (full page URL) or a `url_id` (Bittlebits intern
 ## Development
 
 ```bash
-git clone https://github.com/bittlebits/bittlebits-mcp
+git clone https://github.com/bittlebitsai/bittlebits-mcp
 cd bittlebits-mcp
 npm install
 npm run dev       # run with tsx (no build step)
