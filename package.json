@@ -2,6 +2,8 @@
   "name": "bittlebits-mcp",
   "version": "0.1.0",
   "description": "Bittlebits MCP server — GEO scores and rewrites in your AI agent",
+  "mcpName": "ai.bittlebits/bittlebits",
+  "homepage": "https://bittlebits.ai/docs/mcp",
   "type": "module",
   "bin": {
     "bittlebits-mcp": "dist/index.js"
