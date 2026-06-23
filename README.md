@@ -142,14 +142,13 @@ npm install
 npm run dev       # run the server with tsx (no build step)
 npm run build     # compile to dist/
 
-# Try the setup flow against a local/staging backend:
-BITTLEBITS_BASE_URL=http://localhost:8025 node dist/index.js setup
+# Try the setup flow
+node dist/index.js setup
 ```
 
 Environment variables:
 
 - `BITTLEBITS_API_KEY` — API key for server mode (skips browser login).
-- `BITTLEBITS_BASE_URL` — override the Bittlebits instance (default `https://bittlebits.ai`).
 
 ---
 
