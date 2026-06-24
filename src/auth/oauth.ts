@@ -225,10 +225,47 @@ function resultPage(success: boolean): string {
         ? "Bittlebits is connected. You can close this tab and return to your terminal."
         : "Something went wrong. Return to your terminal and try again.";
     const accent = success ? "#10b981" : "#ef4444";
+    const icon = success
+        ? `<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="24" fill="#10b98120"/>
+            <path d="M14 24.5l7 7 13-13" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+           </svg>`
+        : `<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="24" fill="#ef444420"/>
+            <path d="M16 16l16 16M32 16L16 32" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round"/>
+           </svg>`;
     return `<!doctype html><html><head><meta charset="utf-8"><title>${title}</title>
-<style>body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;background:#0b0b0f;color:#e7e7ea;
-display:flex;align-items:center;justify-content:center;height:100vh;margin:0}
-.card{text-align:center;max-width:420px;padding:40px}
-h1{font-size:22px;margin:0 0 12px;color:${accent}}p{color:#9ca3af;line-height:1.5}</style></head>
-<body><div class="card"><h1>${title}</h1><p>${message}</p></div></body></html>`;
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  color:#111827;
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  background-color:#edfaf5;
+  background-image:
+    radial-gradient(circle,#0e82c87a 1px,transparent 1px),
+    radial-gradient(75% 65% at 12% 45%,#34d39938 0%,transparent 100%),
+    radial-gradient(60% 70% at 88% 12%,#3b82f638 0%,transparent 100%);
+  background-size:20px 20px,100% 100%,100% 100%;
+}
+.card{
+  text-align:center;max-width:440px;padding:48px 40px;
+  background:rgba(255,255,255,0.75);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.9);
+  border-radius:20px;
+  box-shadow:0 4px 32px rgba(0,0,0,0.07);
+}
+.logo{font-size:11px;font-weight:700;letter-spacing:.12em;color:#9ca3af;margin-bottom:36px;text-transform:uppercase}
+.icon{margin-bottom:20px}
+h1{font-size:24px;font-weight:700;margin-bottom:10px;color:${accent}}
+p{color:#6b7280;line-height:1.65;font-size:15px;max-width:300px;margin:0 auto}
+</style></head>
+<body><div class="card">
+  <div class="logo">Bittlebits MCP</div>
+  <div class="icon">${icon}</div>
+  <h1>${title}</h1>
+  <p>${message}</p>
+</div></body></html>`;
 }
