@@ -4,6 +4,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { createServer } from "./server.js";
 import { resolveApiKey } from "./auth/apiKey.js";
 import { registerSetupCommand } from "./cli/setup.js";
+import { registerLaunchCommand } from "./cli/launch.js";
 
 const VERSION = "0.1.0";
 
@@ -27,6 +28,7 @@ async function main(): Promise<void> {
         .version(VERSION);
 
     registerSetupCommand(program);
+    registerLaunchCommand(program);
 
     // No subcommand → start the server.
     program.action(runServer);

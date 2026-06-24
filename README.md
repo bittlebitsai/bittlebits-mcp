@@ -58,7 +58,6 @@ npx @bittlebits.ai/mcp setup [options]
   --global                             Write user-global config
   --api-key <key>                      Use this key instead of signing in
   -y, --yes                            Non-interactive (use flags/defaults)
-  --base-url <url>                     Target a non-production instance
 ```
 
 Where each client's config is written:
@@ -71,6 +70,38 @@ Where each client's config is written:
 | Codex | `.codex/config.toml` | `~/.codex/config.toml` |
 
 Re-running `setup` is safe: it merges into existing files, preserving your other MCP servers, and only updates the Bittlebits entry.
+
+---
+
+## The `launch` command
+
+Already ran `setup`? Use `launch` to instantly open an AI session with Bittlebits pre-loaded — no manual config needed.
+
+```bash
+npx @bittlebits.ai/mcp launch
+```
+
+This detects which AI clients (Claude Code, Codex) are installed on your machine and opens a session. If both are found, you'll be asked to pick one.
+
+```
+npx @bittlebits.ai/mcp launch [options]
+
+  -c, --client <name>   Force a specific client: claude, codex
+  -p, --prompt <text>   Send an initial prompt (non-interactive / scripted use)
+```
+
+**Examples:**
+
+```bash
+# Interactive session with auto-detected client
+npx @bittlebits.ai/mcp launch
+
+# Force Claude Code
+npx @bittlebits.ai/mcp launch --client claude
+
+# One-shot score in your terminal
+npx @bittlebits.ai/mcp launch --client claude --prompt "Get the GEO score for nike.com"
+```
 
 ---
 
