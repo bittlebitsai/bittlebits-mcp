@@ -84,6 +84,9 @@ async function runSetup(opts: SetupOptions): Promise<void> {
         console.log("");
         console.log(success(`Done. Restart your client${wrote > 1 ? "s" : ""} to load Bittlebits.`));
         console.log(dim(`  Try: "Get the Bittlebits GEO score for https://example.com"`));
+        console.log("");
+        console.log(info(`Or skip the restart — launch an AI session right now:`));
+        console.log(dim(`  npx @bittlebits.ai/mcp launch`));
     }
 }
 

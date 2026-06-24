@@ -57,14 +57,18 @@ const CLIENTS = [
         label: "Codex (OpenAI)",
         check: () => isInstalled("codex"),
         launch(prompt?: string) {
-            const mcpArg = JSON.stringify({
-                bittlebits: {
-                    command: "npx",
-                    args: ["-y", "@bittlebits.ai/mcp"],
-                },
-            });
-            const args = ["--mcp-server", mcpArg];
-            if (prompt) args.push(prompt);
+            // Codex doesn't support inline MCP config — register the server
+            // via `codex mcp add` if not already present, then launch.
+            try {
+                execSync("codex mcp get bittlebits", { stdio: "ignore" });
+            } catch {
+                // Not registered yet — add it.
+                execSync(
+                    "codex mcp add bittlebits -- npx -y @bittlebits.ai/mcp",
+                    { stdio: "inherit" },
+                );
+            }
+            const args = prompt ? [prompt] : [];
             spawnSync("codex", args, { stdio: "inherit" });
         },
     },
