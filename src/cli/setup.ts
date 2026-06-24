@@ -6,6 +6,7 @@
  * config file.
  */
 import { Command } from "commander";
+import { stdin as processStdin, stdout as processStdout, env as processEnv } from "node:process";
 import { checkbox, select } from "@inquirer/prompts";
 import ora from "ora";
 import { getBaseUrl, DEFAULT_BASE_URL } from "../config.js";
@@ -90,15 +91,41 @@ async function resolveClients(opts: SetupOptions): Promise<string[]> {
     const flagged = CLIENT_FLAGS.filter((f) => opts[f]).map((f) => f as string);
     if (flagged.length) return flagged;
 
-    const installed = detectInstalled();
     if (opts.yes) {
-        // Non-interactive with no client flags: fall back to whatever is installed.
-        return CLIENTS.filter((c) => installed.has(c.id)).map((c) => c.id);
+        // Non-interactive with no client flags: configure all clients.
+        return CLIENTS.map((c) => c.id);
     }
 
-    return checkbox({
+    const allIds = CLIENTS.map((c) => c.id);
+    const choice = await select<"all" | "specific">({
         message: "Which clients should use Bittlebits?",
-        choices: CLIENTS.map((c) => ({
+        default: "all",
+        choices: [
+            {
+                name: "All clients (recommended) — Claude Code, Cursor, VS Code, Codex, ...",
+                value: "all",
+                description: "Configures every supported client so Bittlebits works wherever you code.",
+            },
+            {
+                name: "Choose specific clients…",
+                value: "specific",
+                description: "Pick one or more clients from a list.",
+            },
+        ],
+    });
+
+    if (choice === "all") return allIds;
+
+    const installed = detectInstalled();
+    // Detected clients first (pre-checked), then the rest.
+    const ordered = [
+        ...CLIENTS.filter((c) => installed.has(c.id)),
+        ...CLIENTS.filter((c) => !installed.has(c.id)),
+    ];
+
+    return checkbox({
+        message: "Select clients to configure:",
+        choices: ordered.map((c) => ({
             name: c.label,
             value: c.id,
             checked: installed.has(c.id),
