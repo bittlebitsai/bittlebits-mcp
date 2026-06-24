@@ -1,6 +1,6 @@
 {
   "name": "bittlebits-mcp",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Bittlebits MCP server — GEO scores and rewrites in your AI agent",
   "mcpName": "ai.bittlebits/bittlebits",
   "homepage": "https://bittlebits.ai/docs/mcp",
