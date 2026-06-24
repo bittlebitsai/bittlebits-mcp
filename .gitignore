@@ -1,5 +1,6 @@
 node_modules/
 dist/
+**/bittlebits-mcp-*.tgz
 .env
 *.js.map
 .cursor
