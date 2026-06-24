@@ -5,3 +5,5 @@ dist/
 .cursor
 .vscode
 .claude
+.codex/
+.mcp.json
