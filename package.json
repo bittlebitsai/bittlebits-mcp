@@ -7,7 +7,7 @@
   "type": "module",
   "bin": {
     "bittlebits-mcp": "dist/index.js",
-    "@bittlebits.ai/mcp": "dist/index.js"
+    "mcp": "dist/index.js"
   },
   "files": [
     "dist",
@@ -41,7 +41,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bittlebitsai/bittlebits-mcp"
+    "url": "git+https://github.com/bittlebitsai/bittlebits-mcp.git"
   },
   "keywords": [
     "mcp",

@@ -9,7 +9,7 @@ Instead of copying content back and forth, your agent can pull what Bittlebits r
 ## Quick start
 
 ```bash
-npx bittlebits-mcp setup
+npx @bittlebits.ai/mcp setup
 ```
 
 This walks you through everything:
@@ -21,7 +21,7 @@ This walks you through everything:
 No copy-pasting keys, no hand-editing JSON.
 
 > Already have an API key? Skip the browser:
-> `npx bittlebits-mcp setup --api-key bb_your_key`
+> `npx @bittlebits.ai/mcp setup --api-key bb_your_key`
 
 ---
 
@@ -51,7 +51,7 @@ All tools accept either a `url` (full page URL) or a `url_id` (Bittlebits intern
 ## The `setup` command
 
 ```
-npx bittlebits-mcp setup [options]
+npx @bittlebits.ai/mcp setup [options]
 
   --claude --cursor --vscode --codex   Configure specific clients (skips the menu)
   -p, --project                        Write project-scoped config (current directory)
@@ -81,7 +81,7 @@ Prefer to wire it up yourself? Any client that supports the stdio transport work
 **Claude Code (CLI):**
 
 ```bash
-claude mcp add --transport stdio bittlebits -e BITTLEBITS_API_KEY=your_key -- npx -y bittlebits-mcp
+claude mcp add --transport stdio bittlebits -e BITTLEBITS_API_KEY=your_key -- npx -y @bittlebits.ai/mcp
 ```
 
 **Cursor / Claude Code (`.cursor/mcp.json` or `.mcp.json`):**
@@ -91,7 +91,7 @@ claude mcp add --transport stdio bittlebits -e BITTLEBITS_API_KEY=your_key -- np
   "mcpServers": {
     "bittlebits": {
       "command": "npx",
-      "args": ["-y", "bittlebits-mcp"],
+      "args": ["-y", "@bittlebits.ai/mcp"],
       "env": { "BITTLEBITS_API_KEY": "your_key_here" }
     }
   }
@@ -106,7 +106,7 @@ claude mcp add --transport stdio bittlebits -e BITTLEBITS_API_KEY=your_key -- np
     "bittlebits": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "bittlebits-mcp"],
+      "args": ["-y", "@bittlebits.ai/mcp"],
       "env": { "BITTLEBITS_API_KEY": "your_key_here" }
     }
   }
@@ -118,7 +118,7 @@ claude mcp add --transport stdio bittlebits -e BITTLEBITS_API_KEY=your_key -- np
 ```toml
 [mcp_servers.bittlebits]
 command = "npx"
-args = ["-y", "bittlebits-mcp"]
+args = ["-y", "@bittlebits.ai/mcp"]
 
 [mcp_servers.bittlebits.env]
 BITTLEBITS_API_KEY = "your_key_here"
@@ -137,7 +137,7 @@ BITTLEBITS_API_KEY = "your_key_here"
 
 ```bash
 git clone https://github.com/bittlebitsai/bittlebits-mcp
-cd bittlebits-mcp
+cd bittlebits-mcp  # local dev still uses the folder name
 npm install
 npm run dev       # run the server with tsx (no build step)
 npm run build     # compile to dist/
